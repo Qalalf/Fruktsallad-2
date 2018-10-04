@@ -1,17 +1,17 @@
-public class Fruits {
+public class Fruit {
     private String name;
     private double price;
 
-    public Fruits(String inputObjectName, double inputPrice) {
+    Fruit(String inputObjectName, double inputPrice) {
         name = inputObjectName;
         price = inputPrice;
     }
 
-    public String getObjectName() {
+    String getObjectName() {
         return name;
     }
 
-    public double getObjectPrice() {
+    double getObjectPrice() {
         return price;
     }
 }
