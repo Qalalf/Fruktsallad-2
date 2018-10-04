@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
-public class ObjectList {
+public class FruitList {
     private ArrayList<Fruit> fruitList;
 
-    ObjectList() {
+    FruitList() {
         fruitList = new ArrayList<Fruit>();
     }
 
-    void addObject(String objectName, double price) {
+    void addFruit(String objectName, double price) {
         fruitList.add(new Fruit(objectName, price));
     }
 
-    void deleteObject(String objectName) {
+    void deleteFruit(String objectName) {
         for (int i = 0; i < fruitList.size(); i++) {
             if (objectName.equals(fruitList.get(i).getObjectName())) {
                 fruitList.remove(i);
@@ -28,7 +28,8 @@ public class ObjectList {
         System.out.println("----------------------");
     }
 
-    Fruit maxValueObject() {
+    Fruit maxValueFruit() {
+        //Metod för att beräkna högsta pris i listan.
         double max = 0;
         int index = 0;
 
@@ -42,7 +43,8 @@ public class ObjectList {
         return fruitList.get(index);
     }
 
-    Fruit minValueObject() {
+    Fruit minValueFruit() {
+        //Metod för att beräkna lägsta pris i listan.
         double min = 10000;
         int index = 0;
         for (int i = 0; i < fruitList.size(); i++) {

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static ObjectList list = new ObjectList();
+    static FruitList list = new FruitList();
     static boolean isRunning = true;
 
     public static void main(String[] args) {
@@ -16,6 +16,7 @@ public class Main {
     }
 
     static void introText() {
+
         System.out.println("____________________________________________________________________________________________\n");
         System.out.println("Välkommen till detta fruktsallads-program för att beräkna dyraste och billigaste varan.");
         System.out.println("(Ett tips är att börja med att skapa en lista av frukt.)");
@@ -36,18 +37,18 @@ public class Main {
     }
 
     static void getOption() {
-
+        //Metod för att läsa input från användaren och "köra" kod utifrån val.
         System.out.println("Skriv in ditt val här: ");
         int input = scannerIntCheck();
 
         switch (input) {
             case 1:
-                addObjects();
+                addFruits();
                 break;
             case 2:
                 System.out.println("Skriv in varans namn som ska tas bort: ");
-                String objectName = scanner.next();
-                list.deleteObject(objectName);
+                String fruitName = scanner.next();
+                list.deleteFruit(fruitName);
                 break;
             case 3:
                 list.printList();
@@ -57,8 +58,8 @@ public class Main {
             case 4:
                 System.out.println();
                 System.out.println("----------------------------------------------");
-                Fruit maxObject = list.maxValueObject();
-                Fruit minObject = list.minValueObject();
+                Fruit maxObject = list.maxValueFruit();
+                Fruit minObject = list.minValueFruit();
                 System.out.println("Dyraste varan är " + maxObject.getObjectName() + " för " + maxObject.getObjectPrice() + ":-");
                 System.out.println("Billigaste varan är " + minObject.getObjectName() + " för " + minObject.getObjectPrice() + ":-");
                 System.out.println("----------------------------------------------");
@@ -73,13 +74,14 @@ public class Main {
 
     }
 
-    static void addObjects() {
+    static void addFruits() {
+        //Kod för att skapa fruktobjekt
         while (true) {
             System.out.println("Skriv in varans namn: ");
             String name = scanner.next();
-            System.out.println("Skriv in varans pris: ");
+            System.out.println("Skriv in varans pris (utan ändelsen kr): ");
             double price = scannerDoubleCheck();
-            list.addObject(name, price);
+            list.addFruit(name, price);
             System.out.println("Fortsätta lägga till varor?\ny/n: ");
             String input = scanner.next();
 
@@ -92,6 +94,7 @@ public class Main {
     }
 
     static int scannerIntCheck() {
+        //Metod för att avgöra att input är av varabeltyp int. Annars ges felmeddelande.
         int input = 0;
 
         try {
@@ -105,6 +108,7 @@ public class Main {
     }
 
     static double scannerDoubleCheck() {
+        //Metod för att avgöra att input är av varabeltyp double. Annars ges felmeddelande.
         double input = 0.0;
         boolean isTesting = false;
         do {
@@ -123,6 +127,7 @@ public class Main {
     }
 
     static void waitForInput() {
+        //Metod för att "pausa" programmet tills 'y' skrivs in.
         String input = "";
 
         while (!input.equals("y")) {
